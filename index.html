@@ -3,7 +3,7 @@
 <head>
 <script>
 // Step 1: Scan for a device with 0xffe5 service
-navigator.bluetooth.requestDevice({
+Bluetooth.requestDevice({
   filters: [{ services: [0xffd5] }]
 })
   .then(function(device) {
