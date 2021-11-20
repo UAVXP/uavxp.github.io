@@ -2,6 +2,17 @@
 <html>
 <head>
 <script>
+  navigator.bluetooth.getAvailability()
+.then(isBluetoothAvailable => {
+  log(`> Bluetooth is ${isBluetoothAvailable ? 'available' : 'unavailable'}`);
+});
+
+if ('onavailabilitychanged' in navigator.bluetooth) {
+  navigator.bluetooth.addEventListener('availabilitychanged', function(event) {
+    log(`> Bluetooth is ${event.value ? 'available' : 'unavailable'}`);
+  });
+}
+  
 // Step 1: Scan for a device with 0xffe5 service
 navigator.bluetooth.requestDevice({
   filters: [{ services: [0xffd5] }]
